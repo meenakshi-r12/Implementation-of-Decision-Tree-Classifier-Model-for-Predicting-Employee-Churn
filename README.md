@@ -8,10 +8,18 @@ To write a program to implement the Decision Tree Classifier Model for Predictin
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1. 
-2. 
-3. 
-4. 
+1. Import Required Libraries.
+2. Use chardet to detect the encoding of the file spam.csv.
+3. Load the CSV file using the encoding (in this case, 'windows-1252').
+4. Display the first few rows and general information.
+5. Ensure the dataset does not contain null or missing values.
+6. Feature (x) = text messages (column "v2").
+7. Label (y) = spam/ham classification (column "v1").
+8. Split the Data into Training and Testing Sets.
+9. Use CountVectorizer to convert text data into numerical vectors.
+10. Use Support Vector Classifier to train on the vectorized data.
+11. Predict whether messages are spam or not.
+12. Use accuracy score to evaluate the model performance
 
 ## Program:
 ```
