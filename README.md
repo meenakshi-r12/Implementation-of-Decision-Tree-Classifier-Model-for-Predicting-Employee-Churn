@@ -51,6 +51,7 @@ accuracy
 ```
 ## Output:
 
+![WhatsApp Image 2025-05-25 at 08 41 21_0e67c679](https://github.com/user-attachments/assets/7d3189b8-8f1a-43e5-a0ef-6dec01f652e1)
 
 
 ## Result:
