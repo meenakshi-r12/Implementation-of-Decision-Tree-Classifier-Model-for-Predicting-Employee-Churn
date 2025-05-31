@@ -30,37 +30,48 @@ RegisterNumber: 212224220062
 */
 ```
 ```
-import chardet
-file='spam.csv'
-with open(file,'rb')as rawdata:
-    result=chardet.detect(rawdata.read(100000))
-result
 import pandas as pd
-data=pd.read_csv("spam.csv",encoding='windows-1252')
+data = pd.read_csv("Employee (1).csv")
 data.head()
+
 data.info()
 data.isnull().sum()
-x=data["v2"].values
-y=data["v1"].values
+data['left'].value_counts()
+
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+
+data['salary'] = le.fit_transform(data['salary'])
+data.head()
+
+x=data[['satisfaction_level','last_evaluation','number_project','average_montly_hours','time_spend_company','Work_accident','promotion_last_5years','salary']]
+x.head()
+
+y=data['left']
+
 from sklearn.model_selection import train_test_split
-x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=0)
-from sklearn.feature_extraction.text import CountVectorizer
-cv=CountVectorizer()
-x_train=cv.fit_transform(x_train)
-x_test=cv.transform(x_test)
-from sklearn.svm import SVC
-svc=SVC()
-svc.fit(x_train,y_train)
-y_pred=svc.predict(x_test)
-y_pred
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,random_state =100)
+
+from sklearn.tree import DecisionTreeClassifier
+dt=DecisionTreeClassifier(criterion='entropy')
+dt.fit(x_train,y_train)
+y_predict=dt.predict(x_test)
+
 from sklearn import metrics
-accuracy=metrics.accuracy_score(y_test,y_pred)
+accuracy=metrics.accuracy_score(y_test,y_predict)
 accuracy
+
+dt.predict([[0.5,0.8,9,260,6,0,1,2]])
 ```
 ## Output:
 
-![WhatsApp Image 2025-05-25 at 08 41 21_0e67c679](https://github.com/user-attachments/assets/7d3189b8-8f1a-43e5-a0ef-6dec01f652e1)
+![Screenshot (125)](https://github.com/user-attachments/assets/2a20e988-ecfc-404e-b318-8a5363791d5b)
 
+![Screenshot (126)](https://github.com/user-attachments/assets/577678e6-1ccf-4a29-8e78-5d71f6833e06)
+
+![Screenshot (127)](https://github.com/user-attachments/assets/1f5054b7-cf09-4fdf-a77d-71edb47e6797)
+
+![Screenshot (128)](https://github.com/user-attachments/assets/cc2aa094-38e3-4aba-8675-b7b4216efe49)
 
 ## Result:
 Thus the program to implement the  Decision Tree Classifier Model for Predicting Employee Churn is written and verified using python programming.
